@@ -1,0 +1,22 @@
+// Fazendo com que a função seja executada em determinado 
+// contexto, mesmo após ser instanciada:
+
+
+function User(nome, email) {
+    this.nome = nome;
+    this.email = email;
+
+    this.exibeInfos = function() {
+        console.log(this.nome, this.email);
+    }
+}
+
+const newUser = new User('mariana', 'm@m.com');
+newUser.exibeInfos(); //mariana m@m.com
+
+const outroUser = {
+    nome: "Rodrigo",
+    email: "r@r.com"
+}
+
+newUser.exibeInfos.call(outroUser);  //Rodrigo r@r.com
